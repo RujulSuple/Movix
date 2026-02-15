@@ -1,0 +1,14 @@
+.tab-content .cast_container {
+    display: flex;
+    gap: 15px;
+    margin-left: 5px;
+
+    .Cast {
+        height: 11%;
+        width: 11%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 15px;
+    }
+}

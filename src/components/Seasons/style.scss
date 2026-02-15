@@ -1,0 +1,94 @@
+@import "../../../mixins.scss";
+
+.seasons-container {
+    margin-left: 5px;
+    width: calc(100% - 5px);
+
+    .seasons_list {
+        width: 90%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        .season {
+            margin: 5px;
+            background-color: rgba(144, 238, 144, 0.452);
+            height: auto;
+            padding: 5px 5px 5px 5px;
+            font-size: 1.5rem;
+            border-radius: 3px;
+        }
+
+        .arrow {
+            transition: transform 0.2s ease-in;
+            margin-right: 5px;
+            transform: rotateZ(0deg);
+            font-size: 15px;
+            position: relative;
+            top: 3px;
+
+            &.rotate {
+                transform: rotateZ(90deg);
+            }
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        & ul li {
+            list-style-type: none;
+        }
+
+        .season-title {
+            font-family: "Roboto";
+            font-weight: 400;
+            display: inline;
+            user-select: none;
+        }
+
+        .episodes-list {
+            overflow: hidden; // Ensures that hidden content doesn’t take up space
+            opacity: 0;
+            height: 0;
+            transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+            margin-top: 4px;
+
+            &.show {
+                opacity: 1;
+                height: auto;
+            }
+
+            &.hide {
+                opacity: 0;
+                height: 0;
+            }
+
+            .episode {
+                margin: 5px;
+                position: relative;
+                top: -10px;
+                opacity: 0;
+                padding: 8px 4px 8px 8px;
+                background-color: rgba(0, 100, 0, 0.822);
+                border-radius: 3px;
+
+                &.show {
+                    animation: slideIn .3s ease-in-out forwards;
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        top: -10px;
+    }
+
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+}

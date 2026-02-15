@@ -1,0 +1,114 @@
+@import '../../../mixins.scss';
+.switchingTabs {
+    @include md{
+        height: 34px;
+        background-color: white;
+        border-radius: 20px;
+        padding: 2px;
+        .tabItems {
+                display: flex;
+                align-items: center;
+                height: 30px;
+                position: relative;
+                .tabItem {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100px;
+                    color: var(--black);
+                    font-size: 14px;
+                    position: relative;
+                    z-index: 1;
+                    cursor: pointer;
+                    transition: color ease 0.3s;
+                    &.active {
+                        color: white;
+                    }
+                }
+                .movingBg {
+                    position: absolute;
+                    height: 30px;
+                    width: 100px;
+                    border-radius: 15px;
+                    background-image: var(--gradient);
+                    left: 0;
+                    transition: left cubic-bezier(0.88, -0.35, 0.565, 1.35) 0.4s;
+                }
+        }
+    }
+    @include tab{
+        height: 34px;
+        background-color: white;
+        border-radius: 20px;
+        padding: 2px;
+        .tabItems {
+                display: flex;
+                align-items: center;
+                height: 30px;
+                position: relative;
+                .tabItem {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 50px;
+                    color: var(--black);
+                    font-size: 12px;
+                    position: relative;
+                    z-index: 1;
+                    cursor: pointer;
+                    transition: color ease 0.3s;
+                    &.active {
+                        color: white;
+                    }
+                }
+                .movingBg {
+                    position: absolute;
+                    height: 30px;
+                    width: 50px;
+                    border-radius: 15px;
+                    background-image: var(--gradient);
+                    left: 0;
+                    transition: left cubic-bezier(0.88, -0.35, 0.565, 1.35) 0.4s;
+                }
+        }
+    }
+
+    @include sm{
+        height: 24px;
+        background-color: white;
+        border-radius: 20px;
+        .tabItems {
+            display: flex;
+            align-items: center;
+            height: 24px;
+            position: relative;
+            .tabItem {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                color: var(--black);
+                font-size: 12px;
+                position: relative;
+                z-index: 1;
+                cursor: pointer;
+                transition: color ease 0.3s;
+                &.active {
+                    color: white;
+                }
+            }
+            .movingBg {
+                position: absolute;
+                height: 24px;
+                width: 50px;
+                border-radius: 20px;
+                background-image: var(--gradient);
+                left: 0;
+                transition: left cubic-bezier(0.88, -0.35, 0.565, 1.35) 0.4s;
+            }
+        }
+    }
+}

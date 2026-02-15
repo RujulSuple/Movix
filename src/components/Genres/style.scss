@@ -1,0 +1,30 @@
+@import '../../../mixins.scss';
+
+.genres {
+    @include md {
+        display: flex;
+    }
+
+    gap: 5px;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 5px;
+    overflow: scroll;
+    margin-top: 4px;
+    font-size: 1.3rem;
+    justify-content: flex-end;
+    display: none;
+
+    .genre {
+        max-width: fit-content;
+        max-height: min-content;
+        background-color: rgba($color: rgb(255, 74, 74), $alpha: .8);
+        padding: 2px;
+        border-radius: 3px;
+        font-weight: 400;
+
+        &:last-child {
+            margin-right: 5px;
+        }
+    }
+}

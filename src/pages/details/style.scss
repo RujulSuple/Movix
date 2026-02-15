@@ -1,0 +1,188 @@
+@import "../../../mixins.scss";
+@import "../../index.scss";
+
+.details-main {
+    height: 100%;
+    width: 100dvw;
+
+    .details-Banner {
+        display: flex;
+        height: 70vh;
+        position: relative;
+        width: 100%;
+
+        @include tab {
+            height: 80vh;
+        }
+
+        @include md {
+            height: 100vh;
+            display: block;
+        }
+
+        .details-backdrop {
+            height: 100%;
+            width: 100%;
+            opacity: .6;
+            z-index: 2;
+            filter: blur(1.3px);
+            user-select: none;
+
+            @include md {
+                opacity: .7;
+                filter: blur(0);
+
+                &.skeleton {}
+            }
+
+            span {
+                height: 100%;
+                width: 100%;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    user-select: none;
+                    -webkit-user-drag: none;
+                }
+            }
+        }
+
+        .details-poster {
+            position: absolute;
+            top: calc(50% + 10px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 70%;
+            z-index: 3;
+            width: 60%;
+            border-radius: 13px;
+
+            @include tab {
+                width: 40%;
+            }
+
+            @include md {
+                display: none;
+            }
+
+            span {
+                height: 100%;
+                width: 100%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+
+                    &:hover {
+                        box-shadow: -2px 3px 3px 0 rgba($color: #646262, $alpha: .4);
+                    }
+                }
+            }
+        }
+
+        .movie-details {
+            z-index: 1;
+
+            @include md {
+                position: absolute;
+                top: 20%;
+                left: 4%;
+                width: 40rem;
+                background-color: rgba($color: #898989, $alpha: 0.39);
+                border-radius: 12px;
+                box-shadow: 0 -2px 2px 0px inset rgba($color: #000000, $alpha: .2), 0 2px 2px 0px inset rgba($color: #000000, $alpha: .2);
+                max-height: 450px;
+
+                &.skeleton {
+                    height: 60%;
+                    width: 28%;
+
+                    &::after {
+                        background-image: linear-gradient(90deg,
+                                rgba(#c0c7d2, 0) 0,
+                                rgba(#8493a8, 0.2) 20%,
+                                rgba(#b6beca, 0.5) 60%,
+                                rgba(#aab3c0, 0));
+                        animation-delay: .3s;
+                    }
+                }
+            }
+
+            .movie-title {
+                @include md {
+                    color: white;
+                    text-align: center;
+                    margin-bottom: 1.2rem;
+                    margin-top: 1rem;
+                    padding: 0 10px;
+                    user-select: none;
+
+                    &.oswald {
+                        font-family: "Oswald", system-ui;
+                        font-optical-sizing: auto;
+                        font-size: 4.6rem;
+                        font-weight: 400;
+                        font-style: normal;
+                    }
+                }
+            }
+
+            .genres {
+                @include md {
+                    height: auto;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 1px;
+                    align-items: center;
+                    font-size: 1.3rem;
+                    padding: 3px;
+                    background-color: transparent;
+                }
+
+                .genre {
+                    @include md {
+                        min-width: 60px;
+                        width: 100%;
+                        border: 0 solid transparent;
+                        text-align: center;
+                        border-radius: 12px;
+                        padding: 5px;
+                        margin: 5px;
+                        background: rgba(192, 191, 191, .111);
+                        backdrop-filter: blur(.6px);
+                        color: white;
+                        user-select: none;
+                        transition: all .2s ease;
+                        outline: 1.5px solid rgb(165, 164, 164);
+                        outline-offset: 2px;
+                        transform-origin: bottom;
+                        font-size: 1.5rem;
+
+                        &:hover {
+                            transform: scale(1.1);
+                            // box-shadow: inset 0 -2px 2px 0px rgba($color: #000000, $alpha: .2), inset 0 2px 2px 0px rgba($color: #000000, $alpha: .2);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .opacity-layer {
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(180deg, rgba(4, 21, 45, 0) 0%, #04152d 79.17%);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+
+        @include md {
+            height: 200px;
+        }
+    }
+}

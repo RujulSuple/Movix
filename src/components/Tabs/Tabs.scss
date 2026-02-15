@@ -1,0 +1,131 @@
+@import "../../../mixins.scss";
+
+.tabs-container {
+    @include md {
+        margin-top: 15px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        .tabs {
+            display: flex;
+            gap: 2rem;
+            padding-bottom: 1rem;
+            position: relative;
+            margin-left: 10px;
+            margin-top: 10px;
+
+            &::after {
+                position: absolute;
+                bottom: 0;
+                z-index: 9;
+                content: "";
+                border-bottom: solid rgb(146, 146, 146) 1px;
+                width: calc(100% - 55px);
+                border-radius: 1px;
+            }
+
+            .tab {
+                color: rgb(146, 146, 146);
+                font-size: 1.8rem;
+                transition: color .3s ease-out;
+                cursor: pointer;
+
+                &.activeTab {
+                    color: white;
+                }
+
+            }
+
+            span.underline {
+                content: "";
+                z-index: 10;
+                bottom: 0;
+                border-radius: 2px;
+                border-bottom: 2px solid rgb(255, 255, 255);
+                transition: width 0.3s ease-out, left 0.3s ease-out;
+                position: absolute;
+            }
+        }
+
+
+
+        .tab-body {
+            width: 100%;
+            height: auto;
+            margin-top: 1rem;
+            position: relative;
+
+            .tab-content {
+                display: none;
+                font-size: 1.2rem;
+                position: relative;
+
+                &.activeTab {
+                    display: block;
+                    animation: slideLeft .3s ease-out forwards;
+                }
+
+                .carousel {
+                    margin: 0;
+
+                    svg {
+                        display: none;
+                    }
+
+                    .contentWrapper .carouselItems {
+                        padding: 13px 0px;
+                        gap: 15px;
+
+                        .carouselItem {
+                            width: 260px;
+
+                            &:hover {
+                                box-shadow: none;
+                            }
+
+
+
+                            .genres {
+                                display: none;
+                            }
+
+                            &:hover {
+                                transform: scale(1.04);
+                            }
+
+                            .posterBlock {
+                                height: 170px;
+
+                                &>span {
+
+                                    img {
+
+                                        &:hover {
+                                            opacity: .8;
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes slideLeft {
+    from {
+        left: 100px;
+        opacity: 0.1;
+    }
+
+    to {
+        left: 0;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,328 @@
+@import '../../../mixins.scss';
+
+
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: baseline;
+    transition: all cubic-bezier(0.53, 0.84, 0.02, 1.43) 0.4s;
+    z-index: 10000;
+
+    &.top {
+        background: rgba(0, 0, 0, 0.20);
+        backdrop-filter: blur(3.5px);
+        -webkit-backdrop-filter: blur(3.5px);
+    }
+
+    &.show {
+        background-color: var(--black3);
+    }
+
+    &.hide {
+        transform: translateY(-60px);
+    }
+
+    .contentWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        cursor: pointer;
+
+        img {
+            height: 50px;
+        }
+    }
+
+    .mobileMenuItems {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        @include md {
+            display: none;
+        }
+
+        svg {
+            font-size: 18px;
+            color: white;
+        }
+
+        cursor:pointer;
+    }
+
+    &.showMenu {
+        @include sm {
+            background: var(--black3);
+
+            .menuItems {
+                display: flex;
+                position: absolute;
+                left: 0;
+                transform-origin: top;
+                background: var(--black3);
+                flex-direction: column;
+                width: 100%;
+                padding: 20px 0;
+                animation: showMenu 0.25s ease forwards;
+
+                /* Here forwards sets the final animation values and not goes to default values */
+                .menuItem {
+                    font-size: 20px;
+                    width: 100%;
+                    height: auto;
+                    padding: 15px 20px;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    &:last-child {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        @include md {
+            .menuItems {
+                list-style-type: none;
+                display: flex;
+                align-items: center;
+
+                .menuItem {
+                    height: 60px;
+                    margin: 0 15px;
+                    color: rgb(255, 255, 255);
+                    font-weight: 500;
+                    font-size: 17px;
+                    position: relative;
+
+                    &:hover {
+                        color: rebeccapurple;
+                    }
+
+                    &.searchIcon {
+                        margin-right: 0;
+                    }
+
+                    svg {
+                        font-size: 18px;
+                        background-color: #ff3a3a;
+                        border: 0 solid transparent;
+                        border-radius: 50%;
+                    }
+
+                    cursor: pointer;
+
+                }
+            }
+        }
+
+        @include tab {
+            background: var(--black3);
+
+            .menuItems {
+                display: flex;
+                position: absolute;
+                left: 0;
+                top: -38px;
+                transform-origin: top;
+                background: var(--black3);
+                flex-direction: column;
+                width: 100%;
+                padding: 20px 0;
+                animation: showMenu 0.25s ease forwards;
+
+                /* Here forwards sets the final animation values and not goes to default values */
+                .menuItem {
+                    font-size: 20px;
+                    width: 100%;
+                    height: auto;
+                    padding: 15px 20px;
+                    margin: 0;
+
+                    &:last-child {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    &.hideMenu {
+        @include sm {
+            .menuItems {
+                display: flex;
+                position: absolute;
+                top: -150px;
+                left: 0;
+                background: var(--black3);
+                flex-direction: column;
+                width: 100%;
+                padding: 20px 0;
+                animation: hideMenu .5s cubic-bezier(1, 1.32, 0, 0.66) forwards;
+
+                .menuItem {
+                    font-size: 20px;
+                    width: 100%;
+                    height: auto;
+                    padding: 15px 20px;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    &:last-child {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        @include md {
+            .menuItems {
+                list-style-type: none;
+                align-items: center;
+                display: flex;
+
+                .menuItem {
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    margin: 0 5px;
+                    color: rgb(255, 255, 255);
+                    font-weight: 500;
+                    font-size: 17px;
+                    position: relative;
+                    padding: 5px;
+                    border-radius: 4px;
+                    transition: all .3s ease;
+
+                    &:hover {
+                        background-color: lightgray;
+                        color: rgba(0, 0, 0, 1);
+                    }
+
+                    &.searchIcon {
+                        margin-right: 0;
+                    }
+
+                    svg {
+                        font-size: 18px;
+                    }
+
+                    cursor: pointer;
+                }
+            }
+        }
+
+        @include tab {
+            .menuItems {
+                display: none;
+            }
+        }
+    }
+
+    .searchBar {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        top: 50px;
+        height: 43px;
+        width: 100%;
+        animation: mobileMenu 0.3s ease forwards;
+
+        @include md {
+            height: 45px;
+            top: 55px;
+        }
+
+        @include tab {
+            top: 50px;
+        }
+
+        .searchInput {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background-color: transparent;
+
+            @include md {
+                height: inherit;
+            }
+
+            @include sm {
+                height: inherit;
+            }
+
+
+            input {
+                width: 100%;
+                height: 35px;
+                outline: 0;
+                border-radius: 0;
+                background-color: lightgray;
+                box-shadow: none;
+                border: 0;
+                padding: 0 15px;
+                font-size: 14px;
+                z-index: 50;
+
+                @include md {
+                    width: 100%;
+                    height: 45px;
+                    font-size: 18px;
+                    padding: 0 20px;
+                    border-radius: 10px;
+                }
+            }
+
+            svg {
+                font-size: 20px;
+                flex-shrink: 0;
+                color: rgb(67, 66, 66);
+                cursor: pointer;
+                margin-left: -30px;
+                z-index: 51;
+            }
+        }
+    }
+}
+
+@keyframes showMenu {
+    0% {
+        transform: translateY(50px);
+    }
+
+    100% {
+        transform: translateY(88px);
+    }
+}
+
+@keyframes hideMenu {
+    0% {
+        transform: translateY(207px);
+    }
+
+    100% {
+        transform: translateY(-130px);
+    }
+}
+
+@keyframes mobileMenu {
+    0% {
+        transform: translateY(-130%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

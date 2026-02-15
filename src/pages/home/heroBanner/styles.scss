@@ -1,0 +1,157 @@
+@import '../../../../mixins.scss';
+@import '../../../index.scss';
+
+// mobile first  
+.heroBanner {
+    width: 100%;
+    height: 246px;
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    @include md {
+        height: 700px;
+    }
+
+    @include tab {
+        height: 345px;
+    }
+
+    .backdrop-img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        filter: blur(0.5px);
+        opacity: 0.5;
+        overflow: hidden;
+
+        .lazy-load-image-background {
+            width: 100%;
+            height: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                aspect-ratio: 1;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        ._skeleton {
+            position: relative;
+            overflow: hidden;
+            background-color: #afafaf;
+            bottom: 2px;
+
+            &::after {
+                position: absolute;
+                content: "";
+                background-image: linear-gradient(90deg, #eee 0%, rgba(255, 255, 255, .4) 65%, #eee 100%);
+                transform: skewX(-45deg);
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: -200%;
+                box-shadow: 8px 10px 30px 20px rgba(white, 1.0);
+                background-size: 30% 100%;
+                background-repeat: no-repeat;
+                animation: shimmer 2s infinite forwards;
+            }
+        }
+    }
+
+    .opacity-layer {
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(180deg, rgba(4, 21, 45, 0) 0%, #04152d 79.17%);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        @include md {
+            height: 250px;
+        }
+    }
+
+    .heroBannerContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        position: relative;
+        text-align: center;
+        margin: 0 auto;
+        justify-content: center;
+
+        &.roboto-homePage {
+            font-family: "Roboto", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+        }
+
+        .title {
+            font-size: 30px;
+            margin-top: 20px;
+            font-weight: 300;
+            margin-bottom: 10px;
+
+            @include md {
+                margin-bottom: 0;
+                font-size: 10rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 12px;
+            font-weight: 200;
+            margin-bottom: 10px;
+
+            @include md {
+                font-size: 24px;
+            }
+        }
+
+        .searchInput {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+
+            button {
+                width: 100px;
+                height: 50px;
+                color: white;
+                background: var(--gradient);
+                border: 0;
+                outline: 0;
+                border-radius: 0 30px 30px 0;
+                cursor: pointer;
+                font-size: 16px;
+
+                @include md {
+                    width: 150px;
+                    height: 60px;
+                    font-size: 18px;
+                }
+            }
+        }
+
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        left: -200%;
+        transform: skewX(-45deg);
+    }
+
+    100% {
+        left: 200%;
+        transform: skewX(145deg);
+    }
+}

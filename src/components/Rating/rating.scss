@@ -1,0 +1,44 @@
+@import "../../index.scss";
+@import "../../../mixins.scss";
+
+.year-rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+    margin-bottom: 4px;
+
+    .year {
+        ul>li {
+            font-size: 1.6rem;
+        }
+    }
+
+    .star-rating {
+
+        button {
+            background-color: transparent;
+            border: none;
+            font-size: 3rem;
+
+            span.on {
+                color: yellow;
+
+                &:hover {
+                    filter: drop-shadow(0 0 4px yellow);
+                }
+
+            }
+
+            .off {
+                color: lightgray;
+            }
+        }
+
+        text.imdb {
+            display: block;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+    }
+}
