@@ -1,3 +1,4 @@
 # Node / Vite / React common ignores
 node_modules/
 .vscode/
+.env
